@@ -2,9 +2,19 @@
 [Project Overview](#project-overview)  | [Installation](#installation)   | [Techniques](#techniques) | [Contribution](#contribution)
 
 ## Project Overview
-Fact checker - A Fact Checking Engine  based on Wikipedia corpus , developed using Ensemble models approach.
+A Knowledge Graph Fact Verification System - This system determines the truthfulness of RDF statements using path-based features and ensemble machine learning. Here's how it works:
 
-This project aims to validate the veracity of a given triple (s, p, o) using a knowledge graph G and a maximum path length k. It begins by initializing the necessary variables and performing path discovery. Paths are discovered by generating query templates and executing queries to obtain relevant information.  Finally, the veracity of the triple is calculated based on the prediction of models. The algorithm returns a veracity score [0,1] for the input triple.
+Core Components
+
+**Knowledge Graph Processing**
+* Takes a reference knowledge graph containing 675,859 triples
+* Removes literal values to keep only URI relationships, resulting in 660,000 triples1
+* Uses these relationships to find paths between entities
+**Path Discovery**
+* For each subject-object pair, finds connecting paths up to length 3
+* Generates SPARQL query templates dynamically
+* Excludes basic RDF predicates (subClassOf, range, domain, type)
+* Counts frequency of unique paths between entities
 
 ## Installation
 
